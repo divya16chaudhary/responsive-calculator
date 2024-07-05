@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body> 
+    <div class="container">
+    <div class="main">
+        <div>
+            
+            <input type="text" class="input" readonly>
+        </div>
+        <div class="margin">
+        <div class="function" >
+            <button style="color: rgb(0, 128, 0); font-weight: bolder;"> AC</button>
+            <button style="color: green; font-weight: bolder;">DEL</button>
+            <button style="color: green; font-weight: bolder;">%</button>
+            <button style="color: green; font-weight: bolder;">/</button>
+        </div>
+        <div class="num1">
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button style="color: green; font-weight: bolder;">*</button> 
+        </div>
+        <div class="num2">
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+            <button style="color: green; font-weight: bolder;">-</button>
+        </div>
+        <div class="num3">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button style="color: green; font-weight: bolder;">+</button>
+        </div>
+        <div class="num4">
+            <button>00</button>
+            <button>0</button>
+            <button>.</button>
+            <button style="color: green; font-weight: bolder;">=</button>
+        </div></div>
+    </div></div>
+    <script src="index.js">document.addEventListener("DOMContentLoaded", function () {
+        const buttons = document.querySelectorAll("button");
+        const input = document.querySelector(".input");
+    
+        buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+                if (button.textContent === "AC") {
+                    input.value = "";
+                } else if (button.textContent === "DEL") {
+                    input.value = input.value.slice(0, -1);
+                } else if (button.textContent === "=") {
+                    try {
+                        input.value = eval(input.value);
+                    } catch {
+                        input.value = "Error";
+                    }
+                } else {
+                    input.value += button.textContent;
+                }
+            });
+        });
+    });
+    </script>
+    
+</body>
+</html>
